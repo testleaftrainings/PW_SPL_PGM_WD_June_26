@@ -1,0 +1,270 @@
+Q1: What is JavaScript, and why is it called the "language of the web"?
+
+JavaScript (JS) is a high-level, interpreted, lightweight, and dynamic programming language.
+It is primarily used to make web pages interactive and dynamic.
+It’s called the "language of the web" because it runs in all browsers without additional installation, making it the core technology for client-side interactivity.
+
+Q2: Why is JavaScript natively supported across all browsers?
+
+Browsers include JavaScript engines (like V8, SpiderMonkey) to execute scripts directly. This universal support ensures consistent execution of JS code across different platforms.
+
+Q3: How is JavaScript used in test automation?
+
+JavaScript powers test frameworks (like Playwright, Cypress, Jest) to write automated test scripts that interact with browsers, validate functionality, and support modern CI/CD pipelines.
+
+Q4: Who created JavaScript, and in which year?
+
+Brendan Eich developed JS at Netscape in 1995
+
+Q5: Expalin the history behind JS naming convention?
+
+JS was created by Brendan Eich at Netscape in just 10 days, It's first name was Mocha.
+Before the official launch, Netscape temporarily renamed it as Livescript(Beta release)
+Finally as part of marketing deal with Netscape and Sun Microsystem. It was renamed as JavaScript to align with Java’s popularity at
+the time, even though it is not directly related to Java
+
+Q6: What is ECMA?
+
+European computer manufacturers association,in order to ensure browser compatibility the standard was framed by ECMA and its first version Ecmascript1 was released in 1997.
+
+Q7: What was the primary purpose of JavaScript when it was first created?
+
+To add interactivity to static HTML pages, like client-side form validation.
+
+Q8: Explain how JavaScript evolved from client-side validation to a full-stack solution?
+
+1995 → Client-side form validation.
+2005 → AJAX introduced dynamic server calls without page reload.
+2009 → Node.js brought JS to the server, enabling full-stack development.
+
+Q9: What is the difference between a browser’s rendering engine and its JavaScript engine?
+
+Rendering engine (Blink/WebKit) → interprets HTML, CSS, and paints the UI.
+JavaScript engine (V8/SpiderMonkey) → executes JS code.
+
+Q10: what the unique features of JS?
+
+Supports both client and server side validation
+Event driven architectur
+Asynchronous prgramming
+
+Q11: What are the different data types in JavaScript?
+
+Primitive and Non-primitive data types
+
+Q12: What is difference between Primitive and Non-Primitive?
+
+Primitive types:
+
+Number, String, Boolean, Null, Undefined, BigInt, Symbol
+It is Stored directly in memory, immutable (e.g., let x = 5).
+
+Non-Primitive types: Object (includes arrays, functions etc.)
+It is stored Stored as references, mutable (e.g., arrays, objects)
+
+Q13: What is the difference between null and undefined?
+
+undefined → variable declared but not assigned a value.
+Var accountNumber=undefined
+
+null → intentional absence of value assigned by the programmer.
+Var LandlineNumber=Null
+
+Q14: What is the difference between var, let, and const?
+
+var: function-scoped, hoisted (initialized as undefined), allows re-declaration.
+let: block-scoped, hoisted but not initialized (temporal dead zone), can be reassigned but not re-declared.
+const: block-scoped, must be initialized at declaration, cannot be reassigned.
+var: redeclare ✅, reassign ✅
+let: redeclare ❌, reassign ✅
+const: redeclare ❌, reassign ❌
+
+Q15: What happens if you use a variable declared with let before initialization?
+
+Reference error: variable cannot be accessed before initialization
+
+Q16: Why is const not always immutable?
+
+const prevents reassignment of the variable identifier.
+Once a variable is declared with const, you cannot assign it to a new value.
+const x = 10;
+x = 20; // ❌ Error: Assignment to constant variable
+
+Q17: What are the different types of scope in JavaScript?
+
+Var:Global/Function scoped
+Let:Block scoped
+Const:Block scoped
+
+Q18: Give an example showing the difference between function scope and block scope.
+
+Function Scope vs Block Scope
+
+1. Function Scope (used by var)
+Variables declared with var are function-scoped.
+This means they are visible throughout the function, regardless of block {} boundaries.
+
+Example:
+
+function testFunctionScope() {
+  if (true) {
+    var x = 10;  // var is function-scoped
+  }
+  console.log(x); // ✅ Accessible here → 10
+}
+
+testFunctionScope();
+
+2. Block Scope (used by let and const)
+
+Variables declared with let and const are block-scoped.
+This means they are only accessible within the block {} where they are defined.
+
+Example:
+
+function testBlockScope() {
+  if (true) {
+    let y = 20;   // let is block-scoped
+    const z = 30; // const is also block-scoped
+  }
+  console.log(y); // ❌ Error: y is not defined
+  console.log(z); // ❌ Error: z is not defined
+}
+
+testBlockScope();
+
+Q19: What is hoisting in JavaScript?
+
+Hoisting os default behaviour of JS by moving the declarations to the top their scope(Global/functional/Block) before the code is executed
+With Hoisting-JS execution has 2 phases
+1.Memory creation phase:
+Here the variables and functiones are allocated with memory.
+2.Execution phase:
+code will run line by line and values are assigned for performing operations.
+
+Q20: How are var, let, and const hoisted differently?
+
+1. var
+
+var declarations are hoisted and initialized to undefined.
+So, you can access the variable before its declaration (but the value will be undefined until assignment).
+Ex:
+console.log(a); // ✅ undefined (hoisted + initialized)
+var a = 10;
+console.log(a); // 10
+
+2. let
+
+let is hoisted but not initialized.
+Exists in a Temporal Dead Zone (TDZ) from the start of the scope until the line of declaration.
+Accessing it before declaration throws a ReferenceError.
+Ex
+console.log(b); // ❌ ReferenceError (TDZ)
+let b = 20;
+console.log(b); // 20
+
+3. const
+
+Same as let → hoisted but not initialized, also in Temporal Dead Zone.
+The difference: must be initialized at the time of declaration.
+Ex:
+console.log(c); // ❌ ReferenceError (TDZ)
+const c = 30;
+console.log(c); // 30
+
+Q21: How are function declarations and function hoisted?
+
+Function declarations are fully hoisted.
+This means both the function name and the function body are moved to the top of their scope.
+You can call the function before it is defined.
+
+Sample code: 
+Sayhello()
+function Sayhello(){
+    console.log("Welcome")
+    }
+
+
+Q22: What is the difference between logical AND (&&) and OR (||) in JavaScript?
+
+1. Logical AND (&&)
+
+Returns true only if both operands are true.
+If the first operand is falsy, it returns that value immediately (short-circuiting).
+If the first operand is truthy, it returns the second operand.
+
+Ex:
+console.log(true && true);   // true
+console.log(true && false);  // false
+console.log(0 && "Hello");   // 0  (stops at first falsy)
+console.log("Hi" && "Bye");  // "Bye" (both truthy → returns last one)
+
+2. Logical OR (||)
+
+Returns true if at least one operand is true.
+If the first operand is truthy, it returns that value immediately (short-circuiting).
+If the first operand is falsy, it returns the second operand.
+
+Ex:
+console.log(true || false);  // true
+console.log(false || false); // false
+console.log(0 || "Hello");   // "Hello" (first falsy → returns second)
+console.log("Hi" || "Bye");  // "Hi" (first truthy → returns immediately)
+
+Q23: What is the difference between ==, ===?
+
+1. Double Equals (==) – Loose Equality
+
+Compares only values, not types.
+If types differ, JavaScript does type coercion (tries to convert them before comparing).
+
+Ex:
+
+console.log(5 == "5");   // true  (string "5" → number 5)// converts string 5 into number and then compares).
+console.log(0 == false); // true  (false → 0)
+console.log(null == undefined); // true  (special case)
+
+2. Triple Equals (===) – Strict Equality
+
+Compares both value and type.
+No type coercion happens.
+
+Ex:
+
+console.log(5 === "5");   // false (number vs string)
+console.log(0 === false); // false (number vs boolean)
+console.log(null === undefined); // false (different types)
+
+======================================================*******================================================================********=======================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
